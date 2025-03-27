@@ -241,7 +241,7 @@ public static class Sheets
     {
         return UiColorSheet.ToDictionary(
             uiColor => uiColor.RowId,
-            uiColor => new UiColorData { Id = uiColor.RowId, Foreground = uiColor.UIForeground, Glow = uiColor.UIGlow });
+            uiColor => new UiColorData { Id = uiColor.RowId, Foreground = uiColor.Dark, Glow = uiColor.Light });
     }
 
     private static Dictionary<ushort, LocationData> LoadLocations()
