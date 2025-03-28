@@ -40,7 +40,7 @@ public class PlayerCustomizeHistoryRepository : BaseRepository
             SetCreateTimestamp(historyDto);
             const string sql = @"
                     INSERT INTO player_customize_histories (is_migrated, player_id, customize, created, updated)
-                    VALUES (@is_migrated, @player_id, @Customize, @created, @updated)";
+                    VALUES (@is_migrated, @player_id, @customize, @created, @updated)";
             Connection.Execute(sql, historyDto);
             return true;
         }
