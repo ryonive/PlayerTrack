@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -109,16 +109,35 @@ public static class Sheets
 
     private static Dictionary<uint, WorldData> LoadWorlds()
     {
-        var luminaWorlds = WorldSheet.Where(
-            world => !world.InternalName.IsEmpty &&
-                     world.DataCenter.RowId != 0
-                     && char.IsUpper(world.InternalName.ExtractText()[0]) &&
-                     !IsTestDc(world.RowId));
+        var luminaWorlds = WorldSheet.Where(x => x.DataCenter.ValueNullable != null &&
+                                         (x.DataCenter.ValueNullable?.Region ?? 0) != 0 &&
+                                         !string.IsNullOrWhiteSpace(x.DataCenter.ValueNullable?.Name.ExtractText()) &&
+                                         !string.IsNullOrWhiteSpace(x.Name.ExtractText()) &&
+                                         !string.IsNullOrWhiteSpace(x.InternalName.ExtractText()) &&
+                                         !x.Name.ExtractText().Contains('-') &&
+                                         !x.Name.ExtractText().Contains('_'))
+                             .Where(x => x.DataCenter.Value.Region != 5 ||
+                                         (x.RowId > 1000 && x.RowId != 1200 &&
+                                          IsChineseString(x.Name.ExtractText())));
 
         return luminaWorlds.ToDictionary(
             luminaWorld => luminaWorld.RowId,
-            luminaWorld => new WorldData { Id = luminaWorld.RowId, Name = Utils.Sanitize(luminaWorld.InternalName), DataCenterId = luminaWorld.DataCenter.RowId });
+            luminaWorld => new WorldData { Id = luminaWorld.RowId, Name = Utils.Sanitize(luminaWorld.Name), DataCenterId = luminaWorld.DataCenter.RowId });
     }
+
+    /// <summary>
+    /// Checks if a string contains Chinese characters.
+    /// </summary>
+    /// <param name="text">The text to check.</param>
+    /// <returns>True if the string contains Chinese characters.</returns>
+    private static bool IsChineseString(string text) => text.All(IsChineseCharacter);
+
+    /// <summary>
+    /// Checks if a character is a Chinese character.
+    /// </summary>
+    /// <param name="c">The character to check.</param>
+    /// <returns>True if the character is a Chinese character.</returns>
+    private static bool IsChineseCharacter(char c) => (c >= 0x4E00 && c <= 0x9FA5) || (c >= 0x3400 && c <= 0x4DB5);
 
     /// <summary>
     /// Finds the closest color from the UIColors to the input color by foreground.
