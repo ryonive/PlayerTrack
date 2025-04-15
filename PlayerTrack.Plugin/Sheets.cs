@@ -118,7 +118,7 @@ public static class Sheets
                                          !x.Name.ExtractText().Contains('_'))
                              .Where(x => x.DataCenter.Value.Region != 5 ||
                                          (x.RowId > 1000 && x.RowId != 1200 &&
-                                          IsChineseString(x.Name.ExtractText())));
+                                          IsCJKString(x.Name.ExtractText())));
 
         return luminaWorlds.ToDictionary(
             luminaWorld => luminaWorld.RowId,
@@ -126,18 +126,18 @@ public static class Sheets
     }
 
     /// <summary>
-    /// Checks if a string contains Chinese characters.
+    /// Checks if a string contains CJK characters.
     /// </summary>
     /// <param name="text">The text to check.</param>
-    /// <returns>True if the string contains Chinese characters.</returns>
-    private static bool IsChineseString(string text) => text.All(IsChineseCharacter);
+    /// <returns>True if the string contains CJK characters.</returns>
+    private static bool IsCJKString(string text) => text.All(IsCJKCharacter);
 
     /// <summary>
-    /// Checks if a character is a Chinese character.
+    /// Checks if a character is a CJK character.
     /// </summary>
     /// <param name="c">The character to check.</param>
-    /// <returns>True if the character is a Chinese character.</returns>
-    private static bool IsChineseCharacter(char c) => (c >= 0x4E00 && c <= 0x9FA5) || (c >= 0x3400 && c <= 0x4DB5);
+    /// <returns>True if the character is a CJK character.</returns>
+    private static bool IsCJKCharacter(char c) => (c >= 0x4E00 && c <= 0x9FFF);
 
     /// <summary>
     /// Finds the closest color from the UIColors to the input color by foreground.
