@@ -263,8 +263,6 @@ public static class Helper
 
         var label = includeLabel ? key : $"###{key}";
         ImGui.SetNextItemWidth(comboWidth == -1 ? comboWidth : CalcScaledComboWidth(comboWidth));
-        var arr = localizedOptions.ToArray();
-        Plugin.PluginLog.Information($"Array Info: Length - {arr.Length} | Content - {string.Join(',', arr.Select(s => $"Content: {s} - Length: {s.Length}"))}");
         if (ImGui.Combo(label, ref value, localizedOptions.ToArray()))
             isChanged = true;
 
