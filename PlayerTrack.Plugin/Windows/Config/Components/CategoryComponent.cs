@@ -147,7 +147,7 @@ public class CategoryComponent : ConfigViewComponent
             SocialListService.ResetCategoryName(category);
 
         if (ImGui.IsItemHovered())
-            Helper.Tooltip(string.Format(Language.ResetCategoryTooltip, SocialListService.GetCategoryName(category)));
+            ImGui.SetTooltip(string.Format(Language.ResetCategoryTooltip, SocialListService.GetCategoryName(category)));
     }
 
     private void DrawAndHandleRankIcons(Category category)

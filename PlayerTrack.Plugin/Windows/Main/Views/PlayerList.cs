@@ -2,6 +2,7 @@
 using System.Numerics;
 using Dalamud.Interface.Utility;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Windowing;
 using PlayerTrack.Domain;
 using PlayerTrack.Models;
 using PlayerTrack.Windows.Main.Components;

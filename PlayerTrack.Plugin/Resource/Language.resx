@@ -547,7 +547,7 @@
         <value>Now</value>
     </data>
     <data name="NumberOfRecordsToBeDeleted" xml:space="preserve">
-        <value>Records to delete: {0}/{1} ({2}%%)</value>
+        <value>Records to delete: {0}/{1} ({2}%)</value>
     </data>
     <data name="OK" xml:space="preserve">
         <value>OK</value>

@@ -182,7 +182,7 @@ public class PlayerSummaryComponent : ViewComponent
             }
 
             if (ImGui.IsItemHovered())
-                Helper.Tooltip(string.Format(Language.PreviouslyOn, player.PreviousWorlds));
+                ImGui.SetTooltip(string.Format(Language.PreviouslyOn, player.PreviousWorlds));
         }
         else
         {
@@ -214,7 +214,7 @@ public class PlayerSummaryComponent : ViewComponent
             }
 
             if (ImGui.IsItemHovered())
-                Helper.Tooltip(string.Format(Language.PreviouslyKnownAs, player.PreviousNames));
+                ImGui.SetTooltip(string.Format(Language.PreviouslyKnownAs, player.PreviousNames));
         }
         else
         {
@@ -314,7 +314,7 @@ public class PlayerSummaryComponent : ViewComponent
             }
 
             if (ImGui.IsItemHovered())
-                Helper.Tooltip(category.IsDynamicCategory() ? Language.UnassignDynamicCategoryTooltip : Language.UnassignCategoryTooltip);
+                ImGui.SetTooltip(category.IsDynamicCategory() ? Language.UnassignDynamicCategoryTooltip : Language.UnassignCategoryTooltip);
 
             if ((i + 1) % 3 != 0 && i != player.AssignedCategories.Count - 1)
                 ImGui.SameLine();

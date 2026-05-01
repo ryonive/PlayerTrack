@@ -27,17 +27,6 @@ public static class Helper
     }
 
     /// <summary>
-    /// An unformatted version for ImGui.SetTooltip
-    /// </summary>
-    /// <param name="tooltip">tooltip to display</param>
-    public static void Tooltip(string tooltip)
-    {
-        using (ImRaii.Tooltip())
-        using (ImRaii.TextWrapPos(ImGui.GetFontSize() * 35.0f))
-            ImGui.TextUnformatted(tooltip);
-    }
-
-    /// <summary>
     /// An unformatted version for ImGui.TextWrapped
     /// </summary>
     /// <param name="text">text to display</param>
@@ -45,17 +34,6 @@ public static class Helper
     {
         using (ImRaii.TextWrapPos(0.0f))
             ImGui.TextUnformatted(text);
-    }
-
-    /// <summary>
-    /// An unformatted version for ImGui.TextWrapped with color
-    /// </summary>
-    /// <param name="color">color to be used</param>
-    /// <param name="text">text to display</param>
-    public static void WrappedTextWithColor(Vector4 color, string text)
-    {
-        using (ImRaii.PushColor(ImGuiCol.Text, color))
-            TextWrapped(text);
     }
 
     /// <summary>
@@ -448,51 +426,6 @@ public static class Helper
 
         return isChanged;
     }
-
-    public struct EndUnconditionally(Action endAction, bool success) : ImRaii.IEndObject
-    {
-        public bool Success { get; } = success;
-
-        private bool Disposed { get; set; } = false;
-        private Action EndAction { get; } = endAction;
-
-        public void Dispose()
-        {
-            if (!Disposed)
-            {
-                EndAction();
-                Disposed = true;
-            }
-        }
-    }
-
-    // Use end-function only on success.
-    private struct EndConditionally(Action endAction, bool success) : ImRaii.IEndObject
-    {
-        public bool Success { get; } = success;
-
-        private bool Disposed { get; set; } = false;
-        private Action EndAction { get; } = endAction;
-
-        public void Dispose()
-        {
-            if (Disposed)
-                return;
-
-            if (Success)
-                EndAction();
-
-            Disposed = true;
-        }
-    }
-
-    public static ImRaii.IEndObject Menu(string label)
-    {
-        return new EndConditionally(ImGui.EndMenu, ImGui.BeginMenu(label));
-    }
-
-    // Used to avoid pops if condition is false for Push.
-    private static void Nop() { }
 }
 
 /// <summary>

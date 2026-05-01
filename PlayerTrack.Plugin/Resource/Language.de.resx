@@ -321,7 +321,7 @@
         <value>Bitte geben eine Welt ein.</value>
     </data>
     <data name="NumberOfRecordsToBeDeleted" xml:space="preserve">
-        <value>Zu löschende Datensätze: {0}/{1} ({2}%%)</value>
+        <value>Zu löschende Datensätze: {0}/{1} ({2}%)</value>
     </data>
     <data name="OK" xml:space="preserve">
         <value>Ok</value>

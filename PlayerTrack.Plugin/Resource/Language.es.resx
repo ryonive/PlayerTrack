@@ -408,7 +408,7 @@
         <value>Por favor introduzca un mundo.</value>
     </data>
     <data name="NumberOfRecordsToBeDeleted" xml:space="preserve">
-        <value>Registros a eliminar: {0}/{1} ({2}%%)</value>
+        <value>Registros a eliminar: {0}/{1} ({2}%)</value>
     </data>
     <data name="OK" xml:space="preserve">
         <value>Aceptar</value>

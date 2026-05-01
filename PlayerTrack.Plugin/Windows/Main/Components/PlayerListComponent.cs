@@ -321,7 +321,7 @@ public class PlayerListComponent : ViewComponent
         // sub menu for selecting category
         if (CategoryNames.Count > 0)
         {
-            using var menu = Helper.Menu(Language.AssignPlayerCategory);
+            using var menu = ImRaii.Menu(Language.AssignPlayerCategory);
             if (!menu.Success)
                 return;
 

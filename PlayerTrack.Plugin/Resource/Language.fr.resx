@@ -432,7 +432,7 @@
         <value>Veuillez saisir un Monde.</value>
     </data>
     <data name="NumberOfRecordsToBeDeleted" xml:space="preserve">
-        <value>Enregistrements à supprimer : {0}/{1} ({2}%%)</value>
+        <value>Enregistrements à supprimer : {0}/{1} ({2}%)</value>
     </data>
     <data name="OnlyShowEnabledIcons" xml:space="preserve">
         <value>Afficher uniquement les icônes activées</value>

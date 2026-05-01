@@ -453,7 +453,7 @@
         <value>请输入服务器名</value>
     </data>
     <data name="NumberOfRecordsToBeDeleted" xml:space="preserve">
-        <value>待删除记录: {0}/{1} ({2}%%)</value>
+        <value>待删除记录: {0}/{1} ({2}%)</value>
     </data>
     <data name="OK" xml:space="preserve">
         <value>确定</value>

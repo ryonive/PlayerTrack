@@ -24,7 +24,7 @@ public static class PlayerCharacterExtension
             HomeWorld = character.HomeWorld.RowId,
             ClassJob = character.ClassJob.RowId,
             Level = character.Level,
-            Customize = character.Customize,
+            Customize = character.Customize.ToArray(),
             CompanyTag = character.CompanyTag.TextValue,
             IsLocalPlayer = false,
             IsDead = character.IsDead,

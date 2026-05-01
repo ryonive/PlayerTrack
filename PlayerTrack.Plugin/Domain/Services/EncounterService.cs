@@ -63,7 +63,7 @@ public class EncounterService
         Plugin.PluginLog.Verbose($"Entering EncounterService.StartCurrentEncounter(): {location.TerritoryId}");
         var loc = Sheets.Locations[location.TerritoryId];
 
-        CreateEncounter(new Encounter { TerritoryTypeId = location.TerritoryId, });
+        CreateEncounter(new Encounter { TerritoryTypeId = location.TerritoryId });
         CurrentEncounter = RepositoryContext.EncounterRepository.GetOpenEncounter();
         if (CurrentEncounter == null)
         {

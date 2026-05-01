@@ -1707,7 +1707,7 @@ namespace PlayerTrack.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Records to delete: {0}/{1} ({2}%%).
+        ///   Looks up a localized string similar to Records to delete: {0}/{1} ({2}%).
         /// </summary>
         internal static string NumberOfRecordsToBeDeleted {
             get {
